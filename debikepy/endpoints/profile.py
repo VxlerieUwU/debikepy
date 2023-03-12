@@ -1,47 +1,7 @@
-# To use this code, make sure you
-#
-#     import json
-#
-# and then, to convert JSON from a string, do
-#
-#     result = welcome3_from_dict(json.loads(json_string))
-
-from typing import Any, List, TypeVar, Callable, Type, cast
 from uuid import UUID
 
+from debikepy.utils import *
 from debikepy.endpoints.location import Location
-
-T = TypeVar("T")
-
-
-def from_none(x: Any) -> Any:
-    assert x is None
-    return x
-
-
-def from_int(x: Any) -> int:
-    assert isinstance(x, int) and not isinstance(x, bool)
-    return x
-
-
-def from_str(x: Any) -> str:
-    assert isinstance(x, str)
-    return x
-
-
-def from_bool(x: Any) -> bool:
-    assert isinstance(x, bool)
-    return x
-
-
-def from_list(f: Callable[[Any], T], x: Any) -> List[T]:
-    assert isinstance(x, list)
-    return [f(y) for y in x]
-
-
-def to_class(c: Type[T], x: Any) -> dict:
-    assert isinstance(x, c)
-    return cast(Any, x).to_dict()
 
 class Profile:
     id: int
