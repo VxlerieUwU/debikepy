@@ -1,4 +1,5 @@
 import httpx
+from tzlocal import get_localzone_name
 
 from debikepy.endpoints.mybike import bike_from_dict
 from debikepy.endpoints.profile import profile_to_dict
@@ -10,18 +11,18 @@ class Client():
             proxies=proxies,
             verify=not disable_ssl,
             headers={
-                'user-agent': ' okhttp/4.9.1',
-                'x-device-app-build': ' 41123',
-                'x-device-app-identifier': ' com.conneqtech.decathlon',
-                'x-device-app-language': ' fr',
-                'x-device-app-version': ' 15.11.0',
-                'x-device-language': ' fr',
-                'x-device-model': ' LGE Nexus 5X',
-                'x-device-platform': ' android',
-                'x-device-platform-version': ' 27',
-                'x-device-timezone': ' Europe/Paris',
-                'x-original-uri': ' http://subs.conneq.tech/',
-                'x-token-lifetime': ' 600',
+                'user-agent': 'okhttp/4.9.1',
+                'x-device-app-build': '41123',
+                'x-device-app-identifier': 'com.conneqtech.decathlon',
+                'x-device-app-language': 'fr',
+                'x-device-app-version': '15.11.0',
+                'x-device-language': 'fr',
+                'x-device-model': 'LGE Nexus 5X',
+                'x-device-platform': 'android',
+                'x-device-platform-version': '27',
+                'x-device-timezone': get_localzone_name(),
+                'x-original-uri': 'http://subs.conneq.tech/',
+                'x-token-lifetime': '600',
             }
         )
 
